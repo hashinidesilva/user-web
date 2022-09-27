@@ -7,15 +7,14 @@ const NewUser = () => {
   const navigate = useNavigate();
 
   const submitHandler = async (patient) => {
-    const response = await fetch("http://localhost:8080/medicare/v1/patients", {
+    await fetch("http://localhost:8080/user/v1/me", {
       method: 'POST',
       body: JSON.stringify(patient),
       headers: {
         'Content-Type': 'application/json'
       }
     });
-    const savedPatientId = await response.json();
-    navigate(`/patients/${savedPatientId}/prescriptions/create`);
+    navigate(-1);
   };
 
   return (

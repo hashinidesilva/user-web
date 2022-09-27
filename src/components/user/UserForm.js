@@ -6,15 +6,21 @@ import { Box, Button, Divider, MenuItem, Stack, TextField, Typography } from '@m
 const UserForm = (props) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState('');
-  const [contactNo, setContactNo] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
 
   const submitHandler = (event) => {
     event.preventDefault();
     const newUser = {
       username: username,
+      firstName: firstName,
+      lastName: lastName,
       address: address,
-      contactNo: contactNo,
+      email: email,
+      phone: phone,
     };
     props.onAddUser(newUser);
   };
@@ -36,11 +42,27 @@ const UserForm = (props) => {
         <Stack spacing={4}>
           <TextField
             fullWidth
-            id="name"
+            id="username"
             label="User name"
             type="text"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
+          />
+          <TextField
+            fullWidth
+            id="firstname"
+            label="First name"
+            type="text"
+            value={firstName}
+            onChange={(event) => setFirstName(event.target.value)}
+          />
+          <TextField
+            fullWidth
+            id="lastname"
+            label="Last name"
+            type="text"
+            value={lastName}
+            onChange={(event) => setLastName(event.target.value)}
           />
           <TextField
             fullWidth
@@ -52,17 +74,24 @@ const UserForm = (props) => {
           />
           <TextField
             fullWidth
-            id="contact"
-            label="Contact number"
+            id="email"
+            label="Email"
+            type="text"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <TextField
+            fullWidth
+            id="phone"
+            label="Phone number"
             type="number"
-            value={contactNo}
-            onChange={(event) => setContactNo(event.target.value)}
+            value={phone}
+            onChange={(event) => setPhone(event.target.value)}
           />
           <Stack direction="row" spacing={4}>
             <Button
               variant="contained"
               type="submit"
-              // disabled={!formIsValid}
               sx={{ backgroundColor: '#0003b2' }}
             >
               Save
